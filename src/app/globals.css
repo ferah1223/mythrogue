@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-display: 'Press Start 2P', monospace;
+
+  --color-bg: #0a0a0f;
+  --color-bg-panel: rgba(10, 10, 20, 0.95);
+  --color-border: rgba(60, 60, 100, 0.3);
+  --color-border-bright: rgba(100, 100, 180, 0.4);
+
+  --color-hp: #dc143c;
+  --color-hp-bg: rgba(220, 20, 60, 0.15);
+  --color-xp: #f4d03f;
+  --color-xp-bg: rgba(244, 208, 63, 0.15);
+  --color-gold: #d4af37;
+  --color-text: #c8c8d8;
+  --color-text-dim: #6868a0;
+  --color-accent: #7c5cfc;
+  --color-accent-bg: rgba(124, 92, 252, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Pixel art tile */
+.tile {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.tile-wall {
+  background: rgba(40, 40, 60, 0.8);
+  border: 1px solid rgba(30, 30, 50, 0.5);
+}
+
+.tile-floor {
+  background: rgba(20, 20, 35, 0.6);
+}
+
+.tile-floor::after {
+  content: '·';
+  color: rgba(100, 100, 140, 0.3);
+  font-size: 16px;
+}
+
+.tile-stairs {
+  background: rgba(20, 20, 35, 0.6);
+}
+
+.tile-chest {
+  background: rgba(20, 20, 35, 0.6);
+}
+
+.tile-trap {
+  background: rgba(20, 20, 35, 0.6);
+}
+
+.tile-door {
+  background: rgba(60, 40, 20, 0.6);
+}
+
+.tile-fog {
+  background: rgba(5, 5, 10, 0.95);
+}
+
+.tile-explored {
+  background: rgba(15, 15, 25, 0.7);
+  opacity: 0.4;
+}
+
+/* Player pulse */
+@keyframes player-glow {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(124, 92, 252, 0.5)); }
+  50% { filter: drop-shadow(0 0 8px rgba(124, 92, 252, 0.8)); }
+}
+
+.player-tile {
+  animation: player-glow 2s ease-in-out infinite;
+}
+
+/* Damage flash */
+@keyframes damage-flash {
+  0% { background: rgba(220, 20, 60, 0.6); }
+  100% { background: transparent; }
+}
+
+.damage-flash {
+  animation: damage-flash 0.3s ease-out;
+}
+
+/* Loot sparkle */
+@keyframes loot-sparkle {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
+.loot-tile {
+  animation: loot-sparkle 1.5s ease-in-out infinite;
+}
+
+/* Panel */
+.panel {
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.panel-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-dim);
+  font-family: var(--font-mono);
+}
+
+/* Stat bar */
+.stat-bar {
+  height: 8px;
+  background: rgba(60, 60, 100, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Message log */
+.msg-log {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.msg-info { color: var(--color-text); }
+.msg-combat { color: var(--color-hp); }
+.msg-loot { color: var(--color-gold); }
+.msg-danger { color: #ff6b6b; }
+.msg-system { color: var(--color-accent); }
+
+/* Controls hint */
+.control-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(60, 60, 100, 0.2);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-dim);
+}
+
+/* Scrollbar */
+.game-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.game-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.game-scroll::-webkit-scrollbar-thumb {
+  background: rgba(60, 60, 100, 0.3);
+  border-radius: 2px;
+}
+
+/* Minimap */
+.minimap-cell {
+  width: 4px;
+  height: 4px;
+}
+
+/* Game over overlay */
+.game-over-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent), #5a3cdc);
+  border: 1px solid rgba(124, 92, 252, 0.5);
+  border-radius: 4px;
+  padding: 8px 16px;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  border-color: rgba(124, 92, 252, 0.8);
+}
+
+/* Inventory item */
+.inv-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  transition: background 0.15s ease;
+}
+
+.inv-item:hover {
+  background: rgba(60, 60, 100, 0.15);
+}
+
+.rarity-common { color: #a8a8b8; }
+.rarity-uncommon { color: #2ecc71; }
+.rarity-rare { color: #5dade2; }
+.rarity-epic { color: #9b59b6; }
+.rarity-legendary { color: #f4d03f; }
