@@ -1,8 +1,10 @@
 # MythRogue
 
+> **Powered by Xiaomi MiMo V2.5** — Roguelike Dungeon Crawler
+
 Fully client-side roguelike dungeon crawler with procedural generation. No API key needed — everything runs in your browser.
 
-![Gameplay](https://opengraph.githubassets.com/1/ferah1223/mythrogue)
+![Gameplay](public/ss-game.png)
 
 ## Features
 
@@ -32,7 +34,14 @@ Fully client-side roguelike dungeon crawler with procedural generation. No API k
 | Boss Forge | Boss encounter generation |
 | Loot Engine | Random item and reward generation |
 | Combat AI | Enemy behavior and attack patterns |
-| Path Finder | Enemy movement and navigation |
+
+## Screenshots
+
+![Title Screen](public/ss-title.png)
+
+![Gameplay](public/ss-game.png)
+
+![Build Stats](public/ss-build.png)
 
 ## Getting Started
 
@@ -56,4 +65,4 @@ Open [http://localhost:3000](http://localhost:3000) to start your run.
 
 ---
 
-Built for Xiaomi MiMo 100T Challenge
+**Powered by Xiaomi MiMo V2.5**
