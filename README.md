@@ -2,6 +2,8 @@
 
 > **Powered by Xiaomi MiMo V2.5** — Roguelike Dungeon Crawler
 
+![MythRogue Gameplay](public/ss-game.png)
+
 ![MythRogue](https://img.shields.io/badge/MythRogue-Roguelike-7c5cfc?style=for-the-badge&logo=gamepad)
 ![MiMo](https://img.shields.io/badge/Powered%20by-Xiaomi%20MiMo%20V2.5-orange?style=for-the-badge)
 ![Agents](https://img.shields.io/badge/Agents-8%20Active-5dade2?style=for-the-badge)
